@@ -223,7 +223,7 @@ CMRS is under development. Deployment, database configuration, and end-to-end ve
 
 BCA Student | Aspiring Full Stack Developer
 
-GitHub: https://github.com/YOUR_GITHUB_USERNAME
+GitHub: https://github.com/Rajeshsingh123456 
 
 ---
 
