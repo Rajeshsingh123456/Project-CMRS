@@ -42,3 +42,7 @@ htmlcov/
 .vscode/
 .DS_Store
 Thumbs.db
+# CMRS database exports and generated schema
+*.sql
+*.dump
+schema.yml
