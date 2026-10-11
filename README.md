@@ -1,221 +1,266 @@
 # CMRS — Cash Management & Reconciliation System
 
-A role-based cash collection and reconciliation platform designed to manage the repayment journey from customers to collection agents, branches, bank deposits, and company accounts.
+A full-stack web application designed to manage customer repayments, cash collections, branch reconciliation, discrepancies, and bank deposits through a structured cash-management workflow.
+
+## Live Demo
+
+**Live Website:** https://project-cmrs.vercel.app
+
+**GitHub Repository:** https://github.com/Rajeshsingh123456/Project-CMRS
+
+---
 
 ## Overview
 
-CMRS aims to bring transparency and accountability to cash repayment operations by tracking collections, verifying cash submissions, identifying discrepancies, and monitoring settlement status.
+The Cash Management & Reconciliation System (CMRS) is designed to organize and track the cash collection process in a lending or financial-services environment.
 
-The system is designed for lending and fintech workflows where accurate cash tracking and reconciliation are essential.
+It helps manage customer and loan records, record repayments, track collection receipts, verify cash submitted by collection agents, identify discrepancies between expected and actual amounts, and maintain bank deposit records.
+
+The system uses role-based access control to help ensure users can access the features permitted for their roles.
 
 ## Key Features
 
-* **Role-Based Access:** Separate workflows for authorized users based on their roles.
-* **Customer & Loan Management:** Maintain customer information, loan details, repayment schedules, and outstanding balances.
-* **Cash Collection:** Record full or partial repayments collected by agents.
-* **Collection Receipts:** Track payment references and collection records.
-* **Branch Reconciliation:** Compare expected collections with actual cash received.
-* **Discrepancy Management:** Identify and track cash differences for further review.
-* **Cash Submission:** Support the submission and verification of collected cash.
-* **Bank Deposit Tracking:** Track deposits and settlement progress.
-* **REST API:** Backend API architecture for communication between the frontend and backend.
+### 1. Authentication & Role-Based Access
+- User authentication using JWT.
+- Role-based access control for protected application features.
+- Access restrictions for authorized operations.
+
+### 2. Customer Management
+- Create and manage customer records.
+- Maintain customer information used in repayment workflows.
+- Associate customers with relevant loan records.
+
+### 3. Loan Management
+- Manage loan information.
+- Track repayment-related details.
+- Monitor outstanding amounts and repayment information where available.
+
+### 4. Cash Collection
+- Record customer repayments.
+- Support full and partial repayment workflows.
+- Maintain collection and receipt/reference information.
+- Track collected amounts for reconciliation.
+
+### 5. Branch Cash Submission
+- Track cash submitted by collection agents to a branch.
+- Maintain expected and received cash information.
+- Support branch-level verification of submitted collections.
+
+### 6. Cash Reconciliation
+- Compare expected cash against actual cash received.
+- Identify and record discrepancies.
+- Support discrepancy review and resolution workflows.
+
+### 7. Bank Deposit Management
+- Record and track bank deposit information.
+- Maintain deposit-related records for cash settlement tracking.
+- Connect branch reconciliation with the bank deposit workflow.
+
+### 8. Dashboard
+- Provide an overview of relevant cash-management information.
+- Help users navigate the workflows available to their roles.
+
+### 9. REST API
+- Django REST Framework backend.
+- JWT-based authentication support.
+- API endpoints for frontend-backend communication.
+
+---
 
 ## Technology Stack
 
-**Frontend**
+| Layer | Technologies |
+|---|---|
+| Frontend | React, Vite, JavaScript |
+| UI | HTML5, CSS3 |
+| Routing | React Router |
+| Backend | Python, Django |
+| API | Django REST Framework |
+| Authentication | Simple JWT |
+| Database | PostgreSQL |
+| API Schema & Documentation | drf-spectacular, OpenAPI |
+| Frontend Deployment | Vercel |
+| Backend Deployment | Render |
+| Version Control | Git, GitHub |
 
-* React.js
-* Vite
-* JavaScript
-* HTML5
-* CSS3
+---
 
-**Backend**
+## Cash Management Workflow
 
-* Python
-* Django
-* Django REST Framework
-* Django REST Framework Simple JWT
+The system is designed around the following workflow:
 
-**Database**
+1. **Customer Repayment** — A customer makes a repayment against a loan.
+2. **Agent Collection** — The collection agent records the payment and relevant receipt details.
+3. **Branch Cash Submission** — The agent submits the collected cash to the branch.
+4. **Branch Verification** — The branch verifies the cash submitted by the agent.
+5. **Reconciliation** — Expected cash is compared with the amount actually received.
+6. **Discrepancy Tracking** — Any difference is recorded for review and resolution.
+7. **Bank Deposit** — Verified cash is recorded as a bank deposit.
+8. **Settlement Tracking** — Deposit and settlement records support tracking through the cash-management process.
 
-* PostgreSQL
+## Example Reconciliation
 
-**API Documentation**
+Consider a branch submission with the following amounts:
 
-* drf-spectacular / OpenAPI
+| Description | Amount |
+|---|---:|
+| Expected Cash | ₹50,000 |
+| Actual Cash Received | ₹48,500 |
+| Difference | ₹1,500 |
 
-**Deployment**
+The ₹1,500 difference represents a discrepancy that requires review according to the branch's reconciliation process.
 
-* Planned: Render for backend and database hosting, Vercel for frontend hosting.
+---
 
-## System Workflow
+## Project Architecture
 
-```text
-Customer Repayment
-        |
-        v
-Collection Agent
-        |
-        v
-Branch Cash Submission
-        |
-        v
-Branch Verification
-        |
-        v
-Expected vs Actual Reconciliation
-        |
-        v
-Bank Deposit
-        |
-        v
-Company Account Settlement
-```
+CMRS follows a frontend-backend architecture.
+
+- **Frontend:** React application responsible for the user interface, navigation, and user interactions.
+- **Backend:** Django REST Framework responsible for API endpoints, business logic, authentication, and server-side validation.
+- **Database:** PostgreSQL stores application records.
+- **Authentication:** JWT tokens are used to authenticate API requests, with permissions applied to protected operations.
+
+The frontend communicates with the backend through HTTP API requests.
 
 ## Project Structure
 
 ```text
-CMRS/
+Project-CMRS/
 ├── backend/
 │   ├── accounts/
 │   ├── branches/
 │   ├── customers/
 │   ├── loans/
+│   ├── cash_collections/
 │   ├── reconciliation/
 │   ├── deposits/
-│   ├── cash_collections/
 │   ├── config/
 │   ├── manage.py
 │   ├── requirements.txt
 │   └── .env.example
-│
 ├── frontend/
-│   ├── src/
 │   ├── public/
+│   ├── src/
 │   ├── package.json
 │   └── .env.example
-│
 ├── .gitignore
 └── README.md
 ```
 
-*The folder structure above represents the intended application organization; update it if the repository differs.*
+---
 
-## Local Setup
+## Getting Started
 
 ### Prerequisites
 
-* Python
-* Node.js and npm
-* PostgreSQL
-* Git
+Install the following before running the project locally:
+
+- Python
+- Node.js and npm
+- PostgreSQL
+- Git
 
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR_GITHUB_USERNAME/Project-CMRS.git
+git clone https://github.com/Rajeshsingh123456/Project-CMRS.git
 cd Project-CMRS
 ```
 
-Replace `YOUR_GITHUB_USERNAME` with your GitHub username.
+### 2. Configure the Backend
 
-### 2. Set Up the Backend
+Open a terminal in the project root and run:
 
 ```bash
 cd backend
 python -m venv venv
 ```
 
-Activate the virtual environment.
-
-**Windows PowerShell:**
+Activate the virtual environment on Windows PowerShell:
 
 ```powershell
 .\venv\Scripts\Activate.ps1
 ```
 
-Install dependencies:
+Install the Python dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Configure Environment Variables
+Configure the backend environment variables using `backend/.env.example` as a reference. Set the required Django settings and PostgreSQL connection details using your local configuration.
 
-Create a `.env` file inside the `backend` directory using `.env.example` as a template.
+Create the required database in PostgreSQL before running migrations.
 
-Configure your own secret key and local PostgreSQL credentials. Never commit your real `.env` file.
-
-Example configuration:
-
-```dotenv
-SECRET_KEY=your_private_secret_key
-DEBUG=True
-ALLOWED_HOSTS=localhost,127.0.0.1
-
-DB_NAME=cmrs_db
-DB_USER=postgres
-DB_PASSWORD=your_local_database_password
-DB_HOST=localhost
-DB_PORT=5432
-```
-
-Create the PostgreSQL database specified by `DB_NAME` before running migrations.
-
-### 4. Run Backend Migrations
+Apply database migrations:
 
 ```bash
 python manage.py migrate
 ```
 
-Create an administrator account if required:
-
-```bash
-python manage.py createsuperuser
-```
-
-Start the backend development server:
+Start the Django development server:
 
 ```bash
 python manage.py runserver
 ```
 
-The default local backend address is:
+The backend development server will normally run at:
 
 `http://127.0.0.1:8000/`
 
-### 5. Set Up the Frontend
+### 3. Configure the Frontend
 
-Open a second terminal:
+Open a second terminal in the project root:
 
 ```bash
 cd frontend
 npm install
+```
+
+Configure the frontend environment variables using `frontend/.env.example`. Set the API base URL to the locally running backend.
+
+Start the Vite development server:
+
+```bash
 npm run dev
 ```
 
-Open the local URL printed by Vite in the terminal.
+Open the local development URL displayed in the terminal.
+
+> **Note:** Local setup depends on the environment variables and database settings configured for your environment.
+
+---
 
 ## Security
 
-* Keep secret keys, database passwords, and production credentials in environment variables.
-* Do not commit `.env` files or sensitive database backups.
-* Use `DEBUG=False` in production.
-* Configure allowed hosts, CORS, and CSRF trusted origins for the deployed domains.
-* Use HTTPS for production traffic.
+- Keep secret keys, database credentials, and access tokens out of source control.
+- Use environment variables for sensitive configuration.
+- Do not commit `.env` files or database backup files containing sensitive information.
+- Set `DEBUG=False` in production.
+- Configure Django allowed hosts, CORS, and CSRF settings appropriately.
+- Apply authentication and role-based permissions to protected API operations.
+- Restrict access to customer, loan, collection, reconciliation, and deposit records.
+- Use HTTPS for deployed application traffic.
+- Use authorized test accounts when demonstrating the application.
 
-## Project Status
+## Current Project Status
 
-CMRS is under development. Deployment, database configuration, and end-to-end verification are part of the release process. Features should be considered complete only after implementation and testing.
+The frontend is deployed on Vercel, and the Django backend is deployed on Render.
 
-## Future Improvements
+CMRS brings together the core cash-management workflows for customer and loan management, collection recording, branch cash reconciliation, discrepancy tracking, and bank deposit management.
 
-* Detailed reconciliation reports and audit trails.
-* Automated settlement status tracking.
-* Improved discrepancy review and approval workflows.
-* Dashboard analytics and collection summaries.
-* Automated testing and production monitoring.
+The deployed application should be tested with authorized accounts to verify individual workflows and role-specific permissions.
+
+## Future Enhancements
+
+Potential areas for further improvement include:
+
+- Automated unit and integration tests.
+- Detailed reconciliation reports and audit trails.
+- Enhanced settlement monitoring and reporting.
+- Additional dashboard analytics.
+- Production monitoring and operational alerts.
 
 ## Author
 
@@ -223,8 +268,6 @@ CMRS is under development. Deployment, database configuration, and end-to-end ve
 
 BCA Student | Aspiring Full Stack Developer
 
-GitHub: https://github.com/Rajeshsingh123456 
+**GitHub:** https://github.com/Rajeshsingh123456
 
----
-
-*CMRS — Bringing visibility, accountability, and accuracy to cash management and reconciliation.*
+**Project Repository:** https://github.com/Rajeshsingh123456/Project-CMRS
